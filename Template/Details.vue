@@ -19,15 +19,12 @@
 
               <p class="card-text">__Field__: {{ __table__.__field__ }}</p>
 
-              <a
-                class="btn btn-primary mt-3"
-                :href="route('admin.__table__.edit', __table__)"
-                >Edit</a
-              >
-              &nbsp;
-              <a class="btn btn-danger mt-3" @click="delete_item(__table__)"
-                >Delete</a
-              >
+              <a :href="route('admin.__table__.edit', __table__)"><jet-primary-button class="m-1">
+                  <font-awesome-icon icon="fa-solid fa-pen-to-square" />
+                </jet-primary-button></a>
+              <jet-danger-button class="m-1" @click="delete_item(__table__)">
+                <font-awesome-icon icon="fa-solid fa-trash-can" />
+              </jet-danger-button>
             </div>
           </div>
         </div>
@@ -39,10 +36,14 @@
 <script>
 import { useForm } from "@inertiajs/vue3";
 import AppLayout from "@/Layouts/AppLayout.vue";
+import JetDangerButton from "@/Components/DangerButton.vue";
+import JetPrimaryButton from "@/Components/PrimaryButton.vue";
 
 export default {
   components: {
     AppLayout,
+    JetDangerButton,
+    JetPrimaryButton,
   },
   props: {
     __table__: {

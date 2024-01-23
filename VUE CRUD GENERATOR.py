@@ -1,17 +1,17 @@
 import os 
 
 file_path = os.path.dirname(os.path.realpath(__file__))
-template_dir = 'Template'
+template_dir = 'Template' # nama folder template
 dir_path = os.path.join(file_path, template_dir)
-working_dir = 'Buku'
+working_dir = 'NEWS_Berita' # nama folder hasil generate
 out_path = os.path.join(file_path, working_dir)
 
 if not os.path.isdir(out_path):
     os.mkdir(out_path)
 
 fdict = {
-    '__Title__': 'Buku',
-    '__table__' : 'buku',
+    '__Title__': 'Berita', # nama tabel sebagai Title di page
+    '__table__' : 'berita', # nama tabel sebagai variable
 }
 lfdict = list(fdict.keys())
 filez = ['Add.vue', 'Details.vue', 'Edit.vue', 'Index.vue']

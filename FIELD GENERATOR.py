@@ -1,5 +1,5 @@
-models = ['judul', 'penulis']
-table = 'buku'
+models = ['judul', 'penulis', 'isi'] # Tambahkan field table disini menggunakan format array
+table = 'berita' # Tambahkan nama table disini
 
 th = '''
         <th>__Field__</th>

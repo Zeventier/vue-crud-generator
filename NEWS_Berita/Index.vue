@@ -1,9 +1,7 @@
 <template>
-  <AppLayout title="__Title__">
+  <AppLayout title="Berita">
     <template #header>
-      <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-        __Title__
-      </h2>
+      <h2 class="font-semibold text-xl text-gray-800 leading-tight">Berita</h2>
     </template>
 
     <div class="py-12">
@@ -11,7 +9,7 @@
         <div class="card">
           <div class="card-body">
             <div class="mb-3">
-              <a class="btn btn-primary" :href="route('admin.__table__.add')"
+              <a class="btn btn-primary" :href="route('admin.berita.add')"
                 ><font-awesome-icon icon="fa-solid fa-square-plus" /> &nbsp;
                 Buat baru</a
               >
@@ -19,30 +17,38 @@
             <table class="table">
               <thead>
                 <tr>
-                  <th>__Field__</th>
+                  <th>Judul</th>
+
+                  <th>Penulis</th>
+
+                  <th>Isi</th>
 
                   <th>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="item in __table__" :key="item.id">
-                  <td>{{ item.__field__ }}</td>
+                <tr v-for="item in berita" :key="item.id">
+                  <td>{{ item.judul }}</td>
+
+                  <td>{{ item.penulis }}</td>
+
+                  <td>{{ item.isi }}</td>
 
                   <td>
-                    <a :href="route('admin.__table__.details', item)" class="m-1"
-                      ><jet-primary-button
+                    <jet-primary-button
+                      ><a :href="route('admin.berita.details', item)"
                         ><font-awesome-icon
-                          icon="fa-solid fa-magnifying-glass" /></jet-primary-button
-                    ></a>
+                          icon="fa-solid fa-magnifying-glass" /></a
+                    ></jet-primary-button>
                     &nbsp;
-                    <a :href="route('admin.__table__.edit', item)" class="m-1"
-                      ><jet-secondary-button
+                    <jet-secondary-button
+                      ><a :href="route('admin.berita.edit', item)"
                         ><font-awesome-icon
-                          icon="fa-solid fa-pen-to-square" /></jet-secondary-button
-                    ></a>
+                          icon="fa-solid fa-pen-to-square" /></a
+                    ></jet-secondary-button>
                     &nbsp;
-                    <jet-danger-button @click="delete_item(item)" class="m-1">
-                      <font-awesome-icon icon="fa-solid fa-trash-can" />
+                    <jet-danger-button @click="delete_item(item)">
+                      <a><font-awesome-icon icon="fa-solid fa-trash-can" /></a>
                     </jet-danger-button>
                   </td>
                 </tr>
@@ -71,7 +77,7 @@ export default {
   },
 
   props: {
-    __table__: {
+    berita: {
       type: Array,
     },
   },
@@ -79,9 +85,9 @@ export default {
   setup() {
     const form = useForm({});
 
-    const delete_item = (__table__) => {
-      if (confirm("Are you sure you want to delete this __table__?")) {
-        form.delete(route("admin.__table__.delete", __table__.id));
+    const delete_item = (berita) => {
+      if (confirm("Are you sure you want to delete this berita?")) {
+        form.delete(route("admin.berita.delete", berita.id));
       }
     };
 
